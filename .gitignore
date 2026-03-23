@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.idea/
+
+# NuGet
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# Inno Setup - manter apenas o .iss, ignorar os executáveis gerados
+Installer/*.exe
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

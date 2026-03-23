@@ -1,0 +1,204 @@
+<Window x:Class="CalculadoraInteligente.UI.Tools.JurosCapitalizados"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Calcular Juro Capitalizado"
+        Height="600" Width="400"
+        MinHeight="600" MinWidth="400"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterOwner"
+        FontFamily="Tahoma"
+        Background="#D4D0C8">
+    <Window.Resources>
+
+        <!-- Campo de entrada (editável) -->
+        <Style x:Key="FieldInputStyle" TargetType="TextBox" BasedOn="{StaticResource ToolInputStyle}">
+            <Setter Property="Height"   Value="28"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <!-- Campo de saída (somente leitura) -->
+        <Style x:Key="FieldOutputStyle" TargetType="TextBox" BasedOn="{StaticResource ToolInputStyle}">
+            <Setter Property="Background"  Value="#E8E4DC"/>
+            <Setter Property="Foreground"  Value="#000080"/>
+            <Setter Property="IsReadOnly"  Value="True"/>
+            <Setter Property="Height"      Value="28"/>
+            <Setter Property="FontSize"    Value="13"/>
+        </Style>
+
+        <!-- Label de campo -->
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground"          Value="#000000"/>
+            <Setter Property="FontSize"            Value="12"/>
+            <Setter Property="FontFamily"          Value="Tahoma"/>
+            <Setter Property="VerticalAlignment"   Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- XP outer ridge -->
+    <Border Background="#D4D0C8" BorderThickness="2,2,1,1" BorderBrush="#FFFFFF" SnapsToDevicePixels="True">
+        <Border BorderThickness="1,1,2,2" BorderBrush="#808080">
+
+            <StackPanel Margin="10">
+
+                <!-- Título + Ajuda -->
+                <Grid Margin="0,0,0,6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Parcelas Fixas" Foreground="#000080" FontSize="13"
+                               FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Button Grid.Column="1" Content="Ajuda" Style="{StaticResource ToolButtonStyle}"
+                            Height="26" Padding="12,2" FontSize="11" Click="Ajuda_Click"/>
+                </Grid>
+
+                <!-- Separador -->
+                <Border Height="1" Background="#808080" Margin="0,0,0,8"/>
+
+                <!-- Formulário principal -->
+                <Grid Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="8"/>
+                        <RowDefinition Height="52"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="8"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                        <RowDefinition Height="34"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Valor Inicial -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Valor Inicial $"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="0" Grid.Column="1" x:Name="TbValorInicial"
+                               Style="{StaticResource FieldInputStyle}" VerticalAlignment="Center"/>
+
+                    <!-- Prestação Fixa -->
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Prestação Fixa $"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="1" Grid.Column="1" x:Name="TbPrestacao"
+                               Style="{StaticResource FieldOutputStyle}" VerticalAlignment="Center"/>
+
+                    <!-- Qtd. Parcelas + Calcular -->
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Qtd. Parcelas x"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="6"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" x:Name="TbParcelas" Style="{StaticResource FieldInputStyle}"/>
+                        <Button  Grid.Column="2" Content="Calcular" Style="{StaticResource ToolButtonStyle}"
+                                 Height="26" Padding="10,2" FontSize="11" Click="Calcular_Click"/>
+                    </Grid>
+
+                    <!-- Separador -->
+                    <Border Grid.Row="3" Grid.ColumnSpan="2" Background="#808080" Height="1" VerticalAlignment="Center"/>
+
+                    <!-- Modo + 1ª Parcela -->
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BtnModo" Content="Modo&#x0a;Simples"
+                                Style="{StaticResource ToolButtonStyle}"
+                                Width="68" Height="46" FontSize="11" Padding="4,4"
+                                VerticalAlignment="Center" Click="BtnModo_Click" Margin="0,0,8,0"/>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="1ª Parcela com" Foreground="#404040" FontSize="11"
+                                       VerticalAlignment="Center" Margin="0,0,4,0"/>
+                            <TextBox x:Name="TbDiasPrimeira" Text="30" Width="36"
+                                     Style="{StaticResource FieldInputStyle}" VerticalAlignment="Center"/>
+                            <TextBlock Text="DIAS ou" Foreground="#404040" FontSize="11"
+                                       VerticalAlignment="Center" Margin="4,0"/>
+                            <CheckBox x:Name="ChkAVista" Content="à vista" Foreground="#000000"
+                                      FontSize="11" FontFamily="Tahoma" VerticalAlignment="Center" Cursor="Hand"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Data da 1ª parcela -->
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Data da 1ª parcela"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="5" Grid.Column="1" x:Name="TbDataPrimeira"
+                               Style="{StaticResource FieldOutputStyle}" VerticalAlignment="Center"/>
+
+                    <!-- Valor da 1ª parcela -->
+                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Valor da 1ª parcela"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="6" Grid.Column="1" x:Name="TbValorPrimeira"
+                               Style="{StaticResource FieldOutputStyle}" VerticalAlignment="Center"/>
+
+                    <!-- Vencer sempre no dia -->
+                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Vencer sempre no dia"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBox x:Name="TbDiaVencimento" Width="48" Style="{StaticResource FieldOutputStyle}"/>
+                        <TextBlock Text="de cada mês" Foreground="#404040" FontSize="11"
+                                   VerticalAlignment="Center" Margin="6,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Separador -->
+                    <Border Grid.Row="8" Grid.ColumnSpan="2" Background="#808080" Height="1" VerticalAlignment="Center"/>
+
+                    <!-- Juro % -->
+                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Juro %"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBox x:Name="TbTaxa" Style="{StaticResource FieldInputStyle}" Width="120"/>
+                        <TextBlock Text="a.m." Foreground="#404040" FontSize="11"
+                                   VerticalAlignment="Center" Margin="6,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Juro Total -->
+                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Juro Total $"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="10" Grid.Column="1" x:Name="TbJurosTotal"
+                               Style="{StaticResource FieldOutputStyle}" VerticalAlignment="Center"/>
+
+                    <!-- Valor Final -->
+                    <TextBlock Grid.Row="11" Grid.Column="0" Text="Valor Final $"
+                               Style="{StaticResource FieldLabelStyle}" Margin="0,0,8,0"/>
+                    <TextBox   Grid.Row="11" Grid.Column="1" x:Name="TbValorFinal"
+                               Style="{StaticResource FieldOutputStyle}" VerticalAlignment="Center"/>
+                </Grid>
+
+                <!-- Separador -->
+                <Border Height="1" Background="#808080" Margin="0,0,0,8"/>
+
+                <!-- Capitalização -->
+                <TextBlock Text="Capitalização" Foreground="#000080" FontSize="12"
+                           FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <TextBlock Text="(informe Valor Inicial, Taxa e Parcelas, depois clique em Calcular)"
+                           Foreground="#404040" FontSize="10" TextAlignment="Center"
+                           TextWrapping="Wrap" Margin="0,0,0,8"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Descontar Cheque"
+                            Style="{StaticResource ToolButtonStyle}"
+                            Height="32" FontSize="11" Click="DescontarCheque_Click"/>
+                    <Button Grid.Column="2" Content="Poupança"
+                            Style="{StaticResource ToolButtonStyle}"
+                            Height="32" FontSize="11" Click="Poupanca_Click"/>
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Border>
+</Window>
