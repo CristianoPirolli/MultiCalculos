@@ -139,36 +139,36 @@ public partial class CalculoData : Window
 
         if (isInicial || isFinal)
         {
-            btn.Background   = new SolidColorBrush(Color.FromRgb(14, 165, 233));
+            btn.Background   = new SolidColorBrush(Color.FromRgb(0, 84, 227));   // XP blue
             btn.Foreground   = Brushes.White;
-            btn.BorderBrush  = new SolidColorBrush(Color.FromRgb(14, 165, 233));
+            btn.BorderBrush  = new SolidColorBrush(Color.FromRgb(0, 48, 112));
             btn.Opacity      = 1.0;
         }
         else if (inRange)
         {
-            btn.Background   = new SolidColorBrush(Color.FromRgb(8, 47, 73));
-            btn.Foreground   = new SolidColorBrush(Color.FromRgb(103, 232, 249));
+            btn.Background   = new SolidColorBrush(Color.FromRgb(184, 200, 220)); // azul-aço claro
+            btn.Foreground   = new SolidColorBrush(Color.FromRgb(0, 0, 128));     // navy
             btn.BorderBrush  = Brushes.Transparent;
             btn.Opacity      = 1.0;
         }
         else if (isToday)
         {
             btn.Background   = Brushes.Transparent;
-            btn.Foreground   = new SolidColorBrush(Color.FromRgb(226, 232, 240));
-            btn.BorderBrush  = new SolidColorBrush(Color.FromRgb(239, 68, 68));
+            btn.Foreground   = Brushes.Black;
+            btn.BorderBrush  = new SolidColorBrush(Color.FromRgb(200, 0, 0));     // borda vermelha
             btn.Opacity      = 1.0;
         }
         else if (otherMonth)
         {
             btn.Background   = Brushes.Transparent;
-            btn.Foreground   = new SolidColorBrush(Color.FromRgb(100, 116, 139));
+            btn.Foreground   = new SolidColorBrush(Color.FromRgb(160, 160, 160)); // cinza médio
             btn.BorderBrush  = Brushes.Transparent;
-            btn.Opacity      = 0.5;
+            btn.Opacity      = 1.0;
         }
         else
         {
             btn.Background   = Brushes.Transparent;
-            btn.Foreground   = new SolidColorBrush(Color.FromRgb(226, 232, 240));
+            btn.Foreground   = Brushes.Black;                                      // preto legível
             btn.BorderBrush  = Brushes.Transparent;
             btn.Opacity      = 1.0;
         }
