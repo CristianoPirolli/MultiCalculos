@@ -208,6 +208,7 @@
                         <MenuItem Header="Abrir Outra Calculadora" InputGestureText="F6"  Click="OpenAnotherCalculator_Click"/>
                         <Separator/>
                         <MenuItem Header="Calcular Data"           Click="CalculoData_Click"/>
+                        <MenuItem Header="Conversor de Medidas"    Click="ConversorMedidas_Click"/>
                         <MenuItem Header="Calcular Tempo"          Click="CalculoTempo_Click"/>
                         <MenuItem Header="Juros Capitalizados"     Click="JurosCapitalizados_Click"/>
                         <MenuItem Header="Regra de Tres"           Click="RegrasDeTres_Click"/>

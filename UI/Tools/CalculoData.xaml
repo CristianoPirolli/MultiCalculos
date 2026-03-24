@@ -225,7 +225,7 @@
 
                             <!-- Grade dos dias -->
                             <UniformGrid x:Name="DaysGrid" Grid.Row="2" Rows="6" Columns="7"
-                                         Background="#FFFFFF"/>
+                                         Background="#D4D0C8"/>
 
                             <!-- Rodapé: hoje -->
                             <StackPanel Grid.Row="3" Orientation="Horizontal"

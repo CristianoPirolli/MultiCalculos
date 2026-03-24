@@ -183,10 +183,11 @@ public partial class MainWindow : Window
         }
     }
 
-    private void CalculoData_Click(object sender, RoutedEventArgs e)          => new CalculoData          { Owner = this }.Show();
-    private void JurosCapitalizados_Click(object sender, RoutedEventArgs e)   => new JurosCapitalizados   { Owner = this }.Show();
-    private void RegrasDeTres_Click(object sender, RoutedEventArgs e)         => new RegrasDeTres         { Owner = this }.Show();
-    private void CalculoIMC_Click(object sender, RoutedEventArgs e)           => new CalculoIMC           { Owner = this }.Show();
+    private void CalculoData_Click(object sender, RoutedEventArgs e)        => ShowToolWindow(() => new CalculoData { Owner = this });
+    private void ConversorMedidas_Click(object sender, RoutedEventArgs e)   => ShowToolWindow(() => new ConversorMedidas { Owner = this });
+    private void JurosCapitalizados_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new JurosCapitalizados { Owner = this });
+    private void RegrasDeTres_Click(object sender, RoutedEventArgs e)       => ShowToolWindow(() => new RegrasDeTres { Owner = this });
+    private void CalculoIMC_Click(object sender, RoutedEventArgs e)         => ShowToolWindow(() => new CalculoIMC { Owner = this });
 
     private void CalculoTempo_Click(object sender, RoutedEventArgs e) =>
         SetTimeMode(!_timeMode);
@@ -239,5 +240,20 @@ public partial class MainWindow : Window
                 "Suporte", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
-}
 
+    private void ShowToolWindow(Func<Window> createWindow)
+    {
+        try
+        {
+            createWindow().Show();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(this,
+                $"Nao foi possivel abrir a ferramenta solicitada.\n\nDetalhes: {ex.Message}",
+                "Erro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+    }
+}
