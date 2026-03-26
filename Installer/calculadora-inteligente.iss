@@ -1,14 +1,14 @@
 ﻿[Setup]
-AppName=Calculadora Inteligente
+AppName=MultiCálculos
 AppVersion=1.0.0
 AppPublisher=Cristiano Pirolli
 AppPublisherURL=https://github.com/CristianoPirolli
 AppSupportURL=https://github.com/CristianoPirolli
 AppUpdatesURL=https://github.com/CristianoPirolli
-DefaultDirName={autopf}\CalculadoraInteligente
-DefaultGroupName=Calculadora Inteligente
-OutputDir=.
-OutputBaseFilename=CalculadoraInteligente-Setup
+DefaultDirName={autopf}\MultiCalculos
+DefaultGroupName=MultiCálculos
+OutputDir=build
+OutputBaseFilename=MultiCalculos-Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=classic
@@ -18,14 +18,14 @@ DisableProgramGroupPage=yes
 ShowLanguageDialog=no
 
 [Files]
-Source: "..\bin\Release\net8.0-windows\win-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "build\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\Calculadora Inteligente"; Filename: "{app}\CalculadoraInteligente.exe"; IconFilename: "{app}\CalculadoraInteligente.exe"
-Name: "{autodesktop}\Calculadora Inteligente"; Filename: "{app}\CalculadoraInteligente.exe"; IconFilename: "{app}\CalculadoraInteligente.exe"; Tasks: desktopicon
+Name: "{group}\MultiCálculos"; Filename: "{app}\MultiCalculos.exe"; IconFilename: "{app}\MultiCalculos.exe"
+Name: "{autodesktop}\MultiCálculos"; Filename: "{app}\MultiCalculos.exe"; IconFilename: "{app}\MultiCalculos.exe"; Tasks: desktopicon
 
 [Tasks]
-Name: "desktopicon"; Description: "Criar atalho na Area de Trabalho"; GroupDescription: "Atalhos adicionais:"
+Name: "desktopicon"; Description: "Criar atalho na área de trabalho"; GroupDescription: "Opções extras:"
 
 [Run]
-Filename: "{app}\CalculadoraInteligente.exe"; Description: "Executar Calculadora Inteligente"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\MultiCalculos.exe"; Description: "Abrir aplicativo"; Flags: nowait postinstall skipifsilent

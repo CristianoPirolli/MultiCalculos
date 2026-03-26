@@ -1,4 +1,4 @@
-<Window x:Class="CalculadoraInteligente.UI.Tools.CalculoIMC"
+﻿<Window x:Class="CalculadoraInteligente.UI.Tools.CalculoIMC"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="IMC - Cálculo do peso ideal"
@@ -9,24 +9,17 @@
         FontFamily="Tahoma"
         Background="#D4D0C8">
 
-    <!-- XP outer ridge -->
     <Border Background="#D4D0C8" BorderThickness="2,2,1,1" BorderBrush="#FFFFFF" SnapsToDevicePixels="True">
         <Border BorderThickness="1,1,2,2" BorderBrush="#808080">
-
             <StackPanel Margin="10">
-
-                <!-- Banner NHANES -->
-                <Border BorderThickness="2,2,1,1" BorderBrush="#808080" Margin="0,0,0,10"
-                        SnapsToDevicePixels="True">
-                    <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#D4D0C8"
-                            Padding="10,7">
-                        <TextBlock Text="National Health and Nutrition Examination Survey - by USA - 1976/1980"
+                <Border BorderThickness="2,2,1,1" BorderBrush="#808080" Margin="0,0,0,10" SnapsToDevicePixels="True">
+                    <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#D4D0C8" Padding="10,7">
+                        <TextBlock Text="Pesquisa Nacional de Saúde e Nutrição - EUA - 1976/1980"
                                    Foreground="#000080" FontSize="11" TextAlignment="Center"
                                    TextWrapping="Wrap" FontWeight="Bold"/>
                     </Border>
                 </Border>
 
-                <!-- Inputs lado a lado -->
                 <Grid Margin="0,0,0,8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -34,8 +27,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Grid.Column="0" BorderThickness="2,2,1,1" BorderBrush="#808080"
-                            Padding="8,6" SnapsToDevicePixels="True">
+                    <Border Grid.Column="0" BorderThickness="2,2,1,1" BorderBrush="#808080" Padding="8,6" SnapsToDevicePixels="True">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                 <GradientStop Color="#FFFFFF" Offset="0"/>
@@ -48,8 +40,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Border Grid.Column="2" BorderThickness="2,2,1,1" BorderBrush="#808080"
-                            Padding="8,6" SnapsToDevicePixels="True">
+                    <Border Grid.Column="2" BorderThickness="2,2,1,1" BorderBrush="#808080" Padding="8,6" SnapsToDevicePixels="True">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                 <GradientStop Color="#FFFFFF" Offset="0"/>
@@ -57,13 +48,12 @@
                             </LinearGradientBrush>
                         </Border.Background>
                         <StackPanel>
-                            <TextBlock Text="Peso Atual (Kg)" Style="{StaticResource ToolLabelStyle}" Margin="0,0,0,4"/>
+                            <TextBlock Text="Peso Atual (kg)" Style="{StaticResource ToolLabelStyle}" Margin="0,0,0,4"/>
                             <TextBox x:Name="TbPeso" Style="{StaticResource ToolInputStyle}" Height="34"/>
                         </StackPanel>
                     </Border>
                 </Grid>
 
-                <!-- Sexo + ícone + botão -->
                 <Grid Margin="0,0,0,8">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -72,36 +62,22 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0">
-                        <RadioButton x:Name="RbMulher" Content="Mulher"
-                                     Style="{StaticResource ToolRadioStyle}" Margin="0,0,0,8"/>
-                        <RadioButton x:Name="RbHomem"  Content="Homem"
-                                     Style="{StaticResource ToolRadioStyle}" IsChecked="True"/>
+                        <RadioButton x:Name="RbMulher" Content="Mulher" Style="{StaticResource ToolRadioStyle}" Margin="0,0,0,8"/>
+                        <RadioButton x:Name="RbHomem" Content="Homem" Style="{StaticResource ToolRadioStyle}" IsChecked="True"/>
                     </StackPanel>
 
-                    <TextBlock Grid.Column="1" Text="&#x2696;" FontSize="46" Foreground="#0054E3"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="&#x2696;" FontSize="46" Foreground="#0054E3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                    <Button Grid.Column="2" Content="Calcular" Style="{StaticResource ToolButtonStyle}"
-                            Width="100" Height="42" VerticalAlignment="Center" Click="Calcular_Click"/>
+                    <Button Grid.Column="2" Content="Calcular" Style="{StaticResource ToolButtonStyle}" Width="100" Height="42" VerticalAlignment="Center" Click="Calcular_Click"/>
                 </Grid>
 
-                <!-- Label do resultado -->
-                <Border x:Name="PainelResultadoLabel"
-                        BorderThickness="2,2,1,1" BorderBrush="#808080"
-                        Padding="10,7" Margin="0,0,0,8" Visibility="Collapsed"
-                        SnapsToDevicePixels="True">
+                <Border x:Name="PainelResultadoLabel" BorderThickness="2,2,1,1" BorderBrush="#808080" Padding="10,7" Margin="0,0,0,8" Visibility="Collapsed" SnapsToDevicePixels="True">
                     <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#D4D0C8">
-                        <TextBlock x:Name="TbClassificacaoLabel"
-                                   FontSize="14" FontWeight="Bold" Foreground="#000080"
-                                   Padding="4,4"/>
+                        <TextBlock x:Name="TbClassificacaoLabel" FontSize="14" FontWeight="Bold" Foreground="#000080" Padding="4,4"/>
                     </Border>
                 </Border>
 
-                <!-- Tabela de faixas + recomendação -->
-                <Border x:Name="PainelResultado"
-                        BorderThickness="2,2,1,1" BorderBrush="#808080"
-                        Padding="8" Margin="0,0,0,8" Visibility="Collapsed"
-                        SnapsToDevicePixels="True">
+                <Border x:Name="PainelResultado" BorderThickness="2,2,1,1" BorderBrush="#808080" Padding="8" Margin="0,0,0,8" Visibility="Collapsed" SnapsToDevicePixels="True">
                     <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#D4D0C8">
                         <Grid Margin="4">
                             <Grid.ColumnDefinitions>
@@ -123,58 +99,32 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Magro  &lt;" Foreground="#404040"
-                                           VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TbLimMagro"
-                                           Foreground="#000000" VerticalAlignment="Center"
-                                           FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Magro  &lt;" Foreground="#404040" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="TbLimMagro" Foreground="#000000" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
 
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Média  ="  Foreground="#404040"
-                                           VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TbLimMedia"
-                                           Foreground="#000080" VerticalAlignment="Center"
-                                           FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Média  =" Foreground="#404040" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TbLimMedia" Foreground="#000080" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
 
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Sobrepeso  &gt;" Foreground="#404040"
-                                           VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TbLimSobrepeso"
-                                           Foreground="#000000" VerticalAlignment="Center"
-                                           FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Sobrepeso  &gt;" Foreground="#404040" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" x:Name="TbLimSobrepeso" Foreground="#000000" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
 
-                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Gordo  &gt;"  Foreground="#404040"
-                                           VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="TbLimGordo"
-                                           Foreground="#000000" VerticalAlignment="Center"
-                                           FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Gordo  &gt;" Foreground="#404040" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Row="3" Grid.Column="1" x:Name="TbLimGordo" Foreground="#000000" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
 
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Obeso  &gt;"  Foreground="#404040"
-                                           VerticalAlignment="Center" FontSize="12"/>
-                                <TextBlock Grid.Row="4" Grid.Column="1" x:Name="TbLimObeso"
-                                           Foreground="#000000" VerticalAlignment="Center"
-                                           FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Obeso  &gt;" Foreground="#404040" VerticalAlignment="Center" FontSize="12"/>
+                                <TextBlock Grid.Row="4" Grid.Column="1" x:Name="TbLimObeso" Foreground="#000000" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="6,0,0,0"/>
                             </Grid>
 
-                            <!-- Recomendação (painel sunken) -->
-                            <Border Grid.Column="2"
-                                    BorderThickness="2,2,1,1" BorderBrush="#808080"
-                                    SnapsToDevicePixels="True">
-                                <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF"
-                                        Background="#FFFFFF" Padding="6">
-                                    <TextBlock x:Name="TbRecomendacao"
-                                               Foreground="#000080" FontSize="11"
-                                               TextAlignment="Center" TextWrapping="Wrap"
-                                               VerticalAlignment="Center"/>
+                            <Border Grid.Column="2" BorderThickness="2,2,1,1" BorderBrush="#808080" SnapsToDevicePixels="True">
+                                <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#FFFFFF" Padding="6">
+                                    <TextBlock x:Name="TbRecomendacao" Foreground="#000080" FontSize="11" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
                                 </Border>
                             </Border>
                         </Grid>
                     </Border>
                 </Border>
 
-                <!-- Barra de escala colorida -->
-                <Border x:Name="PainelBarra"
-                        BorderThickness="2,2,1,1" BorderBrush="#808080"
-                        Padding="8,6" Visibility="Collapsed"
-                        SnapsToDevicePixels="True">
+                <Border x:Name="PainelBarra" BorderThickness="2,2,1,1" BorderBrush="#808080" Padding="8,6" Visibility="Collapsed" SnapsToDevicePixels="True">
                     <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#D4D0C8">
                         <StackPanel Margin="4">
                             <Grid Height="16">
@@ -192,18 +142,16 @@
                                 <Border Grid.Column="4" Background="#EF4444"/>
                             </Grid>
                             <Canvas x:Name="CanvasBarra" Height="14">
-                                <Polygon x:Name="MarkerTriangle" Points="0,0 7,12 -7,12"
-                                         Fill="#0054E3" Canvas.Top="0" Canvas.Left="50"/>
+                                <Polygon x:Name="MarkerTriangle" Points="0,0 7,12 -7,12" Fill="#0054E3" Canvas.Top="0" Canvas.Left="50"/>
                             </Canvas>
                             <Grid>
-                                <TextBlock Text="Magro"  Foreground="#22C55E" FontSize="10" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Magro" Foreground="#22C55E" FontSize="10" HorizontalAlignment="Left"/>
                                 <TextBlock Text="Normal" Foreground="#408040" FontSize="10" HorizontalAlignment="Center"/>
-                                <TextBlock Text="Obeso"  Foreground="#EF4444" FontSize="10" HorizontalAlignment="Right"/>
+                                <TextBlock Text="Obeso" Foreground="#EF4444" FontSize="10" HorizontalAlignment="Right"/>
                             </Grid>
                         </StackPanel>
                     </Border>
                 </Border>
-
             </StackPanel>
         </Border>
     </Border>

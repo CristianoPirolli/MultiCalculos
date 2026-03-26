@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Text;
 using CalculadoraInteligente.Core;
 
@@ -36,19 +36,19 @@ public sealed class CalculatorController
             {
                 case "MC":
                     _engine.MemoryClear();
-                    StatusText = "Memoria limpa.";
+                    StatusText = "Mem?ria limpa.";
                     break;
                 case "MR":
                     _engine.MemoryRecall();
-                    StatusText = "Memoria carregada.";
+                    StatusText = "Mem?ria carregada.";
                     break;
                 case "M+":
                     _engine.MemoryAdd();
-                    StatusText = "Valor somado na memoria.";
+                    StatusText = "Valor somado na mem?ria.";
                     break;
                 case "M-":
                     _engine.MemorySubtract();
-                    StatusText = "Valor subtraido da memoria.";
+                    StatusText = "Valor subtra?do da mem?ria.";
                     break;
                 case "CE":
                     _engine.ClearEntry();
@@ -56,7 +56,7 @@ public sealed class CalculatorController
                     break;
                 case "Back":
                     _engine.Backspace();
-                    StatusText = "Ultimo digito removido.";
+                    StatusText = "?ltimo d?gito removido.";
                     break;
                 case "Sign":
                     _engine.ToggleSign();
@@ -95,8 +95,8 @@ public sealed class CalculatorController
         }
         catch (DivideByZeroException)
         {
-            StatusText = "Erro: divisao por zero.";
-            LastErrorMessage = "Divisao por zero nao e permitida.";
+            StatusText = "Erro: divis?o por zero.";
+            LastErrorMessage = "Divis?o por zero n?o ? permitida.";
             _engine.ClearAll();
         }
     }
@@ -111,7 +111,7 @@ public sealed class CalculatorController
     {
         _history.Clear();
         AddHeader();
-        StatusText = "Historico limpo.";
+        StatusText = "Hist?rico limpo.";
     }
 
     public void SetAlwaysOnTop(bool isEnabled)
@@ -127,12 +127,12 @@ public sealed class CalculatorController
 
     public void MarkNewInstanceOpened()
     {
-        StatusText = "Nova instancia aberta.";
+        StatusText = "Nova inst?ncia aberta.";
     }
 
     public void MarkNewInstanceFailed()
     {
-        StatusText = "Nao foi possivel abrir outra instancia.";
+        StatusText = "N?o foi poss?vel abrir outra inst?ncia.";
     }
 
     private void AddHeader()
@@ -143,3 +143,4 @@ public sealed class CalculatorController
         _history.AppendLine();
     }
 }
+

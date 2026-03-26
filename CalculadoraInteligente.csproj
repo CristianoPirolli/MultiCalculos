@@ -5,8 +5,9 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>CalculadoraInteligente</AssemblyName>
+    <AssemblyName>MultiCalculos</AssemblyName>
     <RootNamespace>CalculadoraInteligente</RootNamespace>
     <ApplicationIcon>UI\image\calculator_icon.ico</ApplicationIcon>
   </PropertyGroup>
 </Project>
+

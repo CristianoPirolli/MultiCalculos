@@ -1,4 +1,4 @@
-# Build output
+﻿# Build output
 bin/
 obj/
 
@@ -16,8 +16,9 @@ packages/
 project.lock.json
 project.assets.json
 
-# Inno Setup - manter apenas o .iss, ignorar os executáveis gerados
+# Inno Setup - manter apenas o script e o utilitário de build
 Installer/*.exe
+Installer/build/
 
 # OS
 Thumbs.db

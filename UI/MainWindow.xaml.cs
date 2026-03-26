@@ -11,8 +11,8 @@ namespace CalculadoraInteligente.UI;
 
 public partial class MainWindow : Window
 {
-    private readonly CalculatorController   _controller  = new();
-    private readonly TimeCalculatorEngine   _timeEngine  = new();
+    private readonly CalculatorController _controller = new();
+    private readonly TimeCalculatorEngine _timeEngine = new();
     private bool _timeMode = false;
 
     public MainWindow()
@@ -27,17 +27,17 @@ public partial class MainWindow : Window
 
         if (_timeMode)
         {
-            DisplayTextBox.Text  = _timeEngine.DisplayText;
+            DisplayTextBox.Text = _timeEngine.DisplayText;
             MemoryIndicator.Text = _timeEngine.MemoryText;
-            HistoryTextBox.Text  = _timeEngine.HistoryText;
-            StatusText.Text      = _timeEngine.StatusText;
+            HistoryTextBox.Text = _timeEngine.HistoryText;
+            StatusText.Text = _timeEngine.StatusText;
         }
         else
         {
-            DisplayTextBox.Text  = _controller.DisplayText;
+            DisplayTextBox.Text = _controller.DisplayText;
             MemoryIndicator.Text = _controller.MemoryText;
-            HistoryTextBox.Text  = _controller.HistoryText;
-            StatusText.Text      = _controller.StatusText;
+            HistoryTextBox.Text = _controller.HistoryText;
+            StatusText.Text = _controller.StatusText;
         }
 
         HistoryTextBox.CaretIndex = HistoryTextBox.Text.Length;
@@ -69,14 +69,14 @@ public partial class MainWindow : Window
         _timeMode = active;
         if (active)
         {
-            HeaderTitle.Text       = "â±  CALCULADORA DE TEMPO";
+            HeaderTitle.Text = "CALCULADORA DE TEMPO";
             HeaderTitle.Foreground = new SolidColorBrush(Color.FromRgb(250, 204, 21));
             HeaderBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(234, 179, 8));
         }
         else
         {
-            HeaderTitle.Text         = "CALCULADORA INTELIGENTE";
-            HeaderTitle.Foreground   = (Brush)FindResource("Accent");
+            HeaderTitle.Text = "MULTIC\u00C1LCULOS";
+            HeaderTitle.Foreground = (Brush)FindResource("Accent");
             HeaderBorder.BorderBrush = (Brush)FindResource("BorderBrushSoft");
         }
         RefreshUi();
@@ -183,11 +183,12 @@ public partial class MainWindow : Window
         }
     }
 
-    private void CalculoData_Click(object sender, RoutedEventArgs e)        => ShowToolWindow(() => new CalculoData { Owner = this });
-    private void ConversorMedidas_Click(object sender, RoutedEventArgs e)   => ShowToolWindow(() => new ConversorMedidas { Owner = this });
+    private void CalculoData_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new CalculoData { Owner = this });
+    private void ConversorMedidas_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new ConversorMedidas { Owner = this });
+    private void AumentoReducao_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new AumentoReducao { Owner = this });
     private void JurosCapitalizados_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new JurosCapitalizados { Owner = this });
-    private void RegrasDeTres_Click(object sender, RoutedEventArgs e)       => ShowToolWindow(() => new RegrasDeTres { Owner = this });
-    private void CalculoIMC_Click(object sender, RoutedEventArgs e)         => ShowToolWindow(() => new CalculoIMC { Owner = this });
+    private void RegrasDeTres_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new RegrasDeTres { Owner = this });
+    private void CalculoIMC_Click(object sender, RoutedEventArgs e) => ShowToolWindow(() => new CalculoIMC { Owner = this });
 
     private void CalculoTempo_Click(object sender, RoutedEventArgs e) =>
         SetTimeMode(!_timeMode);
@@ -197,36 +198,27 @@ public partial class MainWindow : Window
     private void License_Click(object sender, RoutedEventArgs e) => ShowLicense();
     private void SupportEmail_Click(object sender, RoutedEventArgs e) => OpenSupportEmail();
 
-    private void ShowHelp()
-    {
-        MessageBox.Show(this,
-            "Ajuda rapida:\n" +
-            "- F1: abre esta ajuda.\n" +
-            "- F11: abre Sobre a Calculadora.\n" +
-            "- F12: abre Registro (Licenca de Uso).\n" +
-            "- F6: abre outra instancia da calculadora.",
-            "Ajuda", MessageBoxButton.OK, MessageBoxImage.Question);
-    }
+    private void ShowHelp() => ShowToolWindow(() => new ManualAjuda { Owner = this });
 
     private void ShowAbout()
     {
         MessageBox.Show(this,
-            "Calculadora Inteligente\nArquitetura em camadas (UI/Application/Core).",
+            "MultiC\u00E1lculos\nDesenvolvido por Cristiano Pirolli.",
             "Sobre a Calculadora", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void ShowLicense()
     {
         MessageBox.Show(this,
-            "Registro (Licenca de Uso)\nEm avaliacao ate 18/04/2026.",
+            "Registro (Licença de Uso)\nEm avaliação até 18/04/2026.",
             "Registro", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     private void OpenSupportEmail()
     {
-        const string supportEmail = "suporte@calculadora-inteligente.local";
-        var subject = Uri.EscapeDataString("Suporte - Calculadora Inteligente");
-        var body = Uri.EscapeDataString("Descreva aqui sua duvida ou problema.");
+        const string supportEmail = "suporte@multicalculos.local";
+        var subject = Uri.EscapeDataString("Suporte - MultiC\u00E1lculos");
+        var body = Uri.EscapeDataString("Descreva aqui sua dúvida ou problema.");
         var mailto = $"mailto:{supportEmail}?subject={subject}&body={body}";
 
         try
@@ -236,7 +228,7 @@ public partial class MainWindow : Window
         catch (Exception)
         {
             MessageBox.Show(this,
-                $"Nao foi possivel abrir o cliente de e-mail automaticamente.\nContato: {supportEmail}",
+                $"Não foi possível abrir o cliente de e-mail automaticamente.\nContato: {supportEmail}",
                 "Suporte", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
@@ -250,10 +242,14 @@ public partial class MainWindow : Window
         catch (Exception ex)
         {
             MessageBox.Show(this,
-                $"Nao foi possivel abrir a ferramenta solicitada.\n\nDetalhes: {ex.Message}",
+                $"Não foi possível abrir a ferramenta solicitada.\n\nDetalhes: {ex.Message}",
                 "Erro",
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
         }
     }
 }
+
+
+
+

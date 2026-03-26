@@ -1,12 +1,12 @@
-﻿# Calculadora Inteligente
+﻿# MultiCálculos
 
-Projeto desktop WPF em arquitetura de camadas para facilitar manutencao.
+Projeto desktop WPF em arquitetura de camadas para facilitar manutenção.
 
 ## Estrutura
 
 - `UI/`: telas e eventos de interface
-- `Application/`: fluxo da aplicacao (orquestracao de comandos/status/historico)
-- `Core/`: regras de calculo puras
+- `Application/`: fluxo da aplicação
+- `Core/`: regras de cálculo puras
 - `Installer/`: script do Inno Setup
 
 ## Executar
@@ -24,9 +24,9 @@ $dotnet = "$env:USERPROFILE\.dotnet\dotnet.exe"
 & $dotnet publish .\CalculadoraInteligente.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=false
 ```
 
-Executavel final:
+Executável final:
 
-`bin\Release\net8.0-windows\win-x64\publish\CalculadoraInteligente.exe`
+`bin\Release\net8.0-windows\win-x64\publish\MultiCalculos.exe`
 
 ## Instalador
 

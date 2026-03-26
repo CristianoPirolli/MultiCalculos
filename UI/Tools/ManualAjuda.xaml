@@ -1,0 +1,109 @@
+﻿<Window x:Class="CalculadoraInteligente.UI.Tools.ManualAjuda"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ajuda"
+        Height="590" Width="415"
+        MinHeight="590" MinWidth="415"
+        MaxHeight="590" MaxWidth="415"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterOwner"
+        FontFamily="Tahoma"
+        Background="#D4D0C8">
+
+    <Border Background="#D4D0C8" BorderThickness="2,2,1,1" BorderBrush="#FFFFFF" SnapsToDevicePixels="True">
+        <Border BorderThickness="1,1,2,2" BorderBrush="#808080">
+            <Grid Margin="12">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" BorderThickness="1" BorderBrush="#003070" Margin="0,0,0,10" SnapsToDevicePixels="True">
+                    <Border BorderThickness="1,1,0,0" BorderBrush="#6898D0">
+                        <Border BorderThickness="0,0,1,1" BorderBrush="#003070">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#0A246A" Offset="0"/>
+                                    <GradientStop Color="#3A6EA5" Offset="0.5"/>
+                                    <GradientStop Color="#0A246A" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid Margin="8,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="MANUAL RÁPIDO"
+                                           Foreground="#FFFFFF"
+                                           FontSize="13"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"/>
+                                <TextBlock x:Name="TbPagina"
+                                           Grid.Column="1"
+                                           Foreground="#A8C8F0"
+                                           FontSize="11"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Border>
+                </Border>
+
+                <Border Grid.Row="1" BorderThickness="2,2,1,1" BorderBrush="#808080" Margin="0,0,0,10" SnapsToDevicePixels="True">
+                    <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#FFFFFF" Padding="10,8">
+                        <TextBlock x:Name="TbTitulo"
+                                   Foreground="#000080"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   TextWrapping="Wrap"/>
+                    </Border>
+                </Border>
+
+                <Border Grid.Row="2" BorderThickness="2,2,1,1" BorderBrush="#808080" Margin="0,0,0,10" SnapsToDevicePixels="True">
+                    <Border BorderThickness="1,1,2,2" BorderBrush="#FFFFFF" Background="#FFFFFF" Padding="10">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <TextBlock x:Name="TbConteudo"
+                                       Foreground="#000000"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"
+                                       LineHeight="20"/>
+                        </ScrollViewer>
+                    </Border>
+                </Border>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="BtnAnterior"
+                            Grid.Column="0"
+                            Content="&lt; Anterior"
+                            Style="{StaticResource ToolButtonStyle}"
+                            Width="100"
+                            Height="36"
+                            Click="Anterior_Click"/>
+                    <Button x:Name="BtnProxima"
+                            Grid.Column="2"
+                            Content="Próxima &gt;"
+                            Style="{StaticResource ToolButtonStyle}"
+                            Width="100"
+                            Height="36"
+                            Click="Proxima_Click"/>
+                    <Button Grid.Column="4"
+                            Content="Fechar"
+                            Style="{StaticResource ToolButtonStyle}"
+                            Width="90"
+                            Height="36"
+                            Click="Fechar_Click"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

@@ -49,7 +49,7 @@ public partial class CalculoData : Window
         var hoje = DateTime.Today;
         TbHoje1.Text    = $"Hoje: {hoje:dd/MM/yyyy}";
         TbHoje2.Text    = hoje.ToString("dddd, dd 'de' MMMM 'de' yyyy", PtBr);
-        TbTodayFooter.Text = $"Today: {hoje:dd/MM/yyyy}";
+        TbTodayFooter.Text = $"Hoje: {hoje:dd/MM/yyyy}";
     }
 
     // ── Eventos dos campos de data ────────────────────────────────────────
@@ -281,3 +281,4 @@ public partial class CalculoData : Window
         DateTime.TryParseExact(text.Trim(), "dd/MM/yyyy",
             CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
 }
+

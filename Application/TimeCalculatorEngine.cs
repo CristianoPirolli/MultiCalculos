@@ -52,7 +52,7 @@ public sealed class TimeCalculatorEngine
 
             case "Back":
                 if (_digits.Count > 0) { _digits.RemoveAt(_digits.Count - 1); UpdateDisplay(); }
-                StatusText = "Digito removido.";
+                StatusText = "D?gito removido.";
                 break;
 
             case "CE":
@@ -69,10 +69,10 @@ public sealed class TimeCalculatorEngine
 
             case "%": Percent(); break;
 
-            case "MC": _memory = TimeSpan.Zero; _hasMemory = false;   StatusText = "Memoria limpa.";        break;
-            case "MR": if (_hasMemory) { LoadDigits(_memory); UpdateDisplay(); } StatusText = "Memoria carregada.";  break;
-            case "M+": _memory += BufferTime(); _hasMemory = true;    StatusText = "Somado na memoria.";    break;
-            case "M-": _memory -= BufferTime(); _hasMemory = true;    StatusText = "Subtraido da memoria."; break;
+            case "MC": _memory = TimeSpan.Zero; _hasMemory = false;   StatusText = "Mem?ria limpa.";        break;
+            case "MR": if (_hasMemory) { LoadDigits(_memory); UpdateDisplay(); } StatusText = "Mem?ria carregada.";  break;
+            case "M+": _memory += BufferTime(); _hasMemory = true;    StatusText = "Somado na mem?ria.";    break;
+            case "M-": _memory -= BufferTime(); _hasMemory = true;    StatusText = "Subtra?do da mem?ria."; break;
         }
     }
 
@@ -116,7 +116,7 @@ public sealed class TimeCalculatorEngine
         _pendingOp = op;
         _digits.Clear();
         UpdateDisplay();
-        StatusText = "Aguardando proximo valor...";
+        StatusText = "Aguardando pr?ximo valor...";
     }
 
     // ── Igual ──────────────────────────────────────────────────────────────
@@ -154,7 +154,7 @@ public sealed class TimeCalculatorEngine
         _justEqualed = true;
         _digits.Clear();
         UpdateDisplay();   // → "00:00:00"
-        StatusText = "Resultado no historico.";
+        StatusText = "Resultado no hist?rico.";
     }
 
     // ── Display em tempo real ──────────────────────────────────────────────
@@ -185,7 +185,7 @@ public sealed class TimeCalculatorEngine
     public void ClearHistory()
     {
         _history.Clear(); _opCount = 0;
-        AddHeader(); StatusText = "Historico limpo.";
+        AddHeader(); StatusText = "Hist?rico limpo.";
     }
 
     private void Percent()
@@ -247,3 +247,4 @@ public sealed class TimeCalculatorEngine
         _history.AppendLine();
     }
 }
+

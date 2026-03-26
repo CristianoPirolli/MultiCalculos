@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Window x:Class="CalculadoraInteligente.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Calculadora Inteligente"
+        Title="MultiC&#x00E1;lculos"
         Height="590"
         Width="415"
         MinHeight="590"
@@ -200,25 +200,26 @@
 
             <DockPanel Margin="4">
 
-                <!-- ── MENU BAR ── -->
+                <!-- â”€â”€ MENU BAR â”€â”€ -->
                 <Menu DockPanel.Dock="Top"
                       Background="#D4D0C8" Foreground="#000000"
                       Padding="0">
-                    <MenuItem Header="_Opcoes">
-                        <MenuItem Header="Abrir Outra Calculadora" InputGestureText="F6"  Click="OpenAnotherCalculator_Click"/>
+                    <MenuItem Header="_Opções">
+                        <MenuItem Header="Abrir Outra Inst?ncia" InputGestureText="F6"  Click="OpenAnotherCalculator_Click"/>
                         <Separator/>
                         <MenuItem Header="Calcular Data"           Click="CalculoData_Click"/>
                         <MenuItem Header="Conversor de Medidas"    Click="ConversorMedidas_Click"/>
                         <MenuItem Header="Calcular Tempo"          Click="CalculoTempo_Click"/>
+                        <MenuItem Header="Aumento / Redução"      Click="AumentoReducao_Click"/>
                         <MenuItem Header="Juros Capitalizados"     Click="JurosCapitalizados_Click"/>
                         <MenuItem Header="Regra de Tres"           Click="RegrasDeTres_Click"/>
                         <MenuItem Header="Peso Ideal / IMC"        Click="CalculoIMC_Click"/>
                         <Separator/>
-                        <MenuItem Header="Limpar Historico"        Click="ClearHistory_Click"/>
+                        <MenuItem Header="Limpar Histórico"        Click="ClearHistory_Click"/>
                         <MenuItem Header="Sair"                    Click="Exit_Click"/>
                     </MenuItem>
-                    <MenuItem Header="_Configuracoes">
-                        <MenuItem Header="Sempre Visivel (On Top)" IsCheckable="True"
+                    <MenuItem Header="_Configurações">
+                        <MenuItem Header="Sempre Visível (On Top)" IsCheckable="True"
                                   Checked="AlwaysOnTop_Checked" Unchecked="AlwaysOnTop_Checked"/>
                         <MenuItem Header="Som ao Digitar" IsCheckable="True" IsChecked="True"
                                   Checked="BeepOnType_Checked" Unchecked="BeepOnType_Checked"/>
@@ -226,13 +227,13 @@
                     <MenuItem Header="_?">
                         <MenuItem Header="Ajuda"                        InputGestureText="F1"  Click="Help_Click"/>
                         <MenuItem Header="Sobre a Calculadora"          InputGestureText="F11" Click="About_Click"/>
-                        <MenuItem Header="Registro (Licenca de Uso)"    InputGestureText="F12" Click="License_Click"/>
+                        <MenuItem Header="Registro (Licença de Uso)"    InputGestureText="F12" Click="License_Click"/>
                         <Separator/>
                         <MenuItem Header="Enviar e-mail ao suporte"     Click="SupportEmail_Click"/>
                     </MenuItem>
                 </Menu>
 
-                <!-- ── STATUS BAR ── -->
+                <!-- â”€â”€ STATUS BAR â”€â”€ -->
                 <StatusBar DockPanel.Dock="Bottom"
                            Background="#D4D0C8" Foreground="#000000"
                            BorderThickness="1,1,0,0" BorderBrush="#808080"
@@ -242,7 +243,7 @@
                     </StatusBarItem>
                 </StatusBar>
 
-                <!-- ── MAIN CONTENT ── -->
+                <!-- â”€â”€ MAIN CONTENT â”€â”€ -->
                 <Grid Margin="2,3,2,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>   <!-- XP title strip -->
@@ -251,7 +252,7 @@
                         <RowDefinition Height="*"/>      <!-- button pad      -->
                     </Grid.RowDefinitions>
 
-                    <!-- ── XP TITLE STRIP ── -->
+                    <!-- â”€â”€ XP TITLE STRIP â”€â”€ -->
                     <Border x:Name="HeaderBorder" Grid.Row="0" Margin="0,0,0,4"
                             BorderThickness="1" BorderBrush="#003070"
                             SnapsToDevicePixels="True">
@@ -270,7 +271,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock x:Name="HeaderTitle"
-                                               Text="CALCULADORA INTELIGENTE"
+                                               Text="MULTIC&#x00C1;LCULOS"
                                                Foreground="#FFFFFF" FontSize="12"
                                                FontWeight="Bold" FontFamily="Tahoma"
                                                VerticalAlignment="Center"/>
@@ -283,7 +284,7 @@
                         </Border>
                     </Border>
 
-                    <!-- ── HISTORY (sunken inset) ── -->
+                    <!-- â”€â”€ HISTORY (sunken inset) â”€â”€ -->
                     <Border Grid.Row="1" Margin="0,0,0,4"
                             BorderThickness="2,2,1,1" BorderBrush="#808080"
                             SnapsToDevicePixels="True">
@@ -304,7 +305,7 @@
                         </Border>
                     </Border>
 
-                    <!-- ── MEMORY + DISPLAY ── -->
+                    <!-- â”€â”€ MEMORY + DISPLAY â”€â”€ -->
                     <Grid Grid.Row="2" Margin="0,0,0,4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="62"/>
@@ -352,7 +353,7 @@
                         </Border>
                     </Grid>
 
-                    <!-- ── BUTTON PAD ── -->
+                    <!-- â”€â”€ BUTTON PAD â”€â”€ -->
                     <!-- Outer raised panel wrapping all buttons -->
                     <Border Grid.Row="3"
                             BorderThickness="2,2,1,1" BorderBrush="#FFFFFF"
@@ -375,7 +376,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <!-- ── MEMORY column (maroon on blush) ── -->
+                                <!-- â”€â”€ MEMORY column (maroon on blush) â”€â”€ -->
                                 <Button Grid.Row="0" Grid.Column="0" Content="MC" Tag="MC"
                                         Click="CommandButton_Click"
                                         Style="{StaticResource CalcButtonStyle}"
@@ -397,7 +398,7 @@
                                         Background="#C8B4B8" Foreground="#800000"
                                         ToolTip="Adicionar &#224; mem&#243;ria (Memory Add)"/>
 
-                                <!-- ── ROW 0: 7 8 9 ÷ ← ── -->
+                                <!-- ROW 0: 7 8 9 ÷ ← -->
                                 <Button Grid.Row="0" Grid.Column="1" Content="7" Tag="7"
                                         Click="CommandButton_Click" Style="{StaticResource CalcButtonStyle}"/>
                                 <Button Grid.Row="0" Grid.Column="2" Content="8" Tag="8"
@@ -413,7 +414,7 @@
                                         Style="{StaticResource CalcButtonStyle}"
                                         Background="#C8C4B8" Foreground="#404040"/>
 
-                                <!-- ── ROW 1: 4 5 6 × CE ── -->
+                                <!-- ROW 1: 4 5 6 × CE -->
                                 <Button Grid.Row="1" Grid.Column="1" Content="4" Tag="4"
                                         Click="CommandButton_Click" Style="{StaticResource CalcButtonStyle}"/>
                                 <Button Grid.Row="1" Grid.Column="2" Content="5" Tag="5"
@@ -429,7 +430,7 @@
                                         Style="{StaticResource CalcButtonStyle}"
                                         Background="#D0B8B8" Foreground="#800000"/>
 
-                                <!-- ── ROW 2: 1 2 3 - % ── -->
+                                <!-- â”€â”€ ROW 2: 1 2 3 - % â”€â”€ -->
                                 <Button Grid.Row="2" Grid.Column="1" Content="1" Tag="1"
                                         Click="CommandButton_Click" Style="{StaticResource CalcButtonStyle}"/>
                                 <Button Grid.Row="2" Grid.Column="2" Content="2" Tag="2"
@@ -445,7 +446,7 @@
                                         Style="{StaticResource CalcButtonStyle}"
                                         Background="#C8C4B8" Foreground="#404040"/>
 
-                                <!-- ── ROW 3: 0 +/- , + = ── -->
+                                <!-- â”€â”€ ROW 3: 0 +/- , + = â”€â”€ -->
                                 <Button Grid.Row="3" Grid.Column="1" Content="0" Tag="0"
                                         Click="CommandButton_Click" Style="{StaticResource CalcButtonStyle}"/>
                                 <Button Grid.Row="3" Grid.Column="2" Content="+/-" Tag="Sign"
@@ -473,3 +474,8 @@
         </Border>
     </Border>
 </Window>
+
+
+
+
+
